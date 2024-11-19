@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meseret's Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+			background: url('my Designer.jpg') no-repeat center center fixed; /* Replace 'background.jpg' with your image */
+            background-size: cover;
+            color: white;
+        }
+        header {
+            background-color: #007acc;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        header nav a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+        }
+        header nav a:hover {
+            text-decoration: underline;
+        }
+        .profile-pic {
+            display: block;
+            margin: 20px auto;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+            background-color: #007acc; /* Semi-transparent background for text */
+            margin: 20px;
+            border-radius: 10px;
+        }
+        footer {
+            background-color: #007acc;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        form label {
+            display: block;
+            margin-top: 10px;
+			background-color: #007acc;
+        }
+        form input, form textarea, form button {
+            width: 100%;
+            margin-top: 5px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Meseret Mezigebu Sisay</h1>
+        <p>Aspiring Software Developer | Fast Learner | Powerful Worker</p>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About Me</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <!-- Home Section -->
+        <section id="home">
+            <img src="my_photo.jpg" alt="Mesert's Photo" class="profile-pic">
+            <h2>Welcome to My Portfolio</h2>
+            <p>Explore my academic performance, achievements, future goals, and contact information.</p>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p><strong>Academic Performance:</strong> First year University student</p>
+            <p><strong>Skills:</strong> c, Java, C++, C#, , HTML, CSS, PHP</p>
+            <p><strong>Future Goals:</strong> To innovate and contribute in the field of software development, focusing on impactful solutions.</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <form action="#contact" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="mezgebemessi@gmail.com" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                
+                <button type="submit">Send</button>
+            </form>
+            <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $name = htmlspecialchars($_POST['name']);
+                $email = htmlspecialchars($_POST['email']);
+                $message = htmlspecialchars($_POST['message']);
+                
+                $to = "mezgebemessi@gmail.com"; // Replace with your email
+                $subject = "New Contact Form Submission";
+                $body = "Name: $name\nEmail: $email\nMessage: $message";
+                $headers = "From: $email";
+
+                if (mail($to, $subject, $body, $headers)) {
+                    echo "<p style='color:green;'>Message sent successfully!</p>";
+                } else {
+                    echo "<p style='color:red;'>Failed to send message.</p>";
+                }
+            }
+            ?>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 Meseret Mezigebu Sisay</p>
+    </footer>
+</body>
+</html>
